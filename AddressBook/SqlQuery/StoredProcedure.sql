@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[SpAddPersonDetails]
+﻿-- Sp addition
+CREATE PROCEDURE [dbo].[SpAddPersonDetails]
 (
 	@FirstName VARCHAR(255),
 	@LastName VARCHAR(255),
@@ -9,15 +10,17 @@
 	@PhoneNumber VARCHAR(12),
 	@Email VARCHAR(100),
 	@BookName VARCHAR(20),
-	@BookType VARCHAR(10) 
+	@BookType VARCHAR(10)
 )
 AS
 BEGIN
-	INSERT INTO address VALUES
-	(@FirstName, @LastName, @Address, @City, @State, @Zip, @PhoneNumber, @Email, @BookName, @BookType)
+	INSERT INTO address (FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email, BookName, BookType)
+	VALUES (@FirstName, @LastName, @Address, @City, @State, @Zip, @PhoneNumber, @Email, @BookName, @BookType)
 END
 GO
 
+
+-- Sp for update
 CREATE PROCEDURE [dbo].[spUpdatePersonCityState]
 	@BookID INT,
 	@City VARCHAR(100),

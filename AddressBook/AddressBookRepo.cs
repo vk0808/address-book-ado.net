@@ -68,7 +68,7 @@ namespace AddressBook
 
 
         // Method to add records to table
-        public bool AddEmployee(PersonModel model)
+        public bool AddPerson(PersonModel model)
         {
             connection = new SqlConnection(connectionString);
 

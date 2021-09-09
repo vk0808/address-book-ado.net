@@ -25,7 +25,7 @@ namespace AddressBook
             person.BookName = "book3";
             person.BookType = "Profession";
 
-            if (repo.AddEmployee(person))
+            if (repo.AddPerson(person))
             {
                 Console.WriteLine("\nPerson added successfully");
             }
