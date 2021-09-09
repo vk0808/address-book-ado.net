@@ -73,7 +73,6 @@ namespace AddressBook
             {
                 PersonModel displayModel = new PersonModel();
 
-
                 using (BookConnection)
                 {
                     SqlCommand command = new SqlCommand("SELECT FirstName, LastName FROM address WHERE AddedDate BETWEEN '2019-07-12' and GETDATE();", BookConnection);
@@ -87,6 +86,49 @@ namespace AddressBook
                             displayModel.FirstName = dr.GetString(0);
                             displayModel.LastName = dr.GetString(1);
                             Console.WriteLine(displayModel.FirstName + " " + displayModel.LastName);
+                        }
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                BookConnection.Close();
+            }
+            return false;
+        }
+
+
+        public bool FindCount()
+        {
+            BookConnection = ConnectionSetup();
+            try
+            {
+                string cityState = "Bangalore";
+                PersonModel displayModel = new PersonModel();
+
+                using (BookConnection)
+                {
+                    SqlCommand command = new SqlCommand($"SELECT COUNT(FirstName) AS CityStateCount FROM address WHERE CITY = '{cityState}';", BookConnection);
+                    int countPerson = 0;
+
+                    BookConnection.Open();
+                    SqlDataReader dr = command.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            countPerson  = dr.GetInt32(0);
+                            Console.WriteLine(cityState + ": " + countPerson);
+
                         }
                         return true;
                     }

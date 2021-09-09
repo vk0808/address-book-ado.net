@@ -28,5 +28,13 @@ namespace AddressBookTest
             var personName = book.RetrievePerson_BetweenParticularDate();
             Assert.IsTrue(personName);
         }
+
+        [TestMethod]
+        public void GivenNothing_ShouldReturnCount()
+        {
+            Book book = new Book();
+            var countPerson = book.FindCount();
+            Assert.IsTrue(countPerson);
+        }
     }
 }
