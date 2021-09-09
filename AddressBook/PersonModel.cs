@@ -18,5 +18,6 @@ namespace AddressBook
         public string Email { get; set; }
         public string BookName { get; set; }
         public string BookType { get; set; }
+        public DateTime AddedDate { get; set; }
     }
 }
